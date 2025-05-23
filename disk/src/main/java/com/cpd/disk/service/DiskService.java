@@ -1,14 +1,20 @@
 package com.cpd.disk.service;
 
+import com.cpd.disk.config.RabbitMQConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.concurrent.*;
+import java.util.*;
 
 @Service
 public class DiskService {
+
+    private final RabbitTemplate rabbitTemplate;
+
+    public DiskService(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     public void createDiskWithDelays(String diskId, int size, String type) {
         sendStatus(diskId, size, type, "REQUESTED", 0);
@@ -27,6 +33,7 @@ public class DiskService {
             message.put("status", status);
 
             System.out.println("[disk-statuses] Status " + status + " send for disk " + diskId);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.DISK_STATUS_QUEUE, message);
         }, delaySeconds, TimeUnit.SECONDS);
     }
 }
