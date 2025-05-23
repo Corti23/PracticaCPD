@@ -1,5 +1,7 @@
 package com.cpd.instance.service;
 
+import com.cpd.instance.config.RabbitMQConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -7,6 +9,12 @@ import java.util.concurrent.*;
 
 @Service
 public class InstanceService {
+
+    private final RabbitTemplate rabbitTemplate;
+
+    public InstanceService(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     public void createInstanceWithDelays(String id, String name, int memory, int cores, String diskId) {
         sendStatus(id, name, memory, cores, null, "BUILDING_DISK", diskId, 0);
@@ -30,6 +38,7 @@ public class InstanceService {
             msg.put("diskId", diskId);
 
             System.out.println("[instance-statuses] Status " + status + " for instance " + id);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.INSTANCE_STATUS_QUEUE, msg);
         }, delaySeconds, TimeUnit.SECONDS);
     }
 
@@ -49,6 +58,7 @@ public class InstanceService {
             msg.put("diskId", diskId);
 
             System.out.println("[instance-statuses] Instance " + id + " in status RUNNING with IP " + ip);
+            rabbitTemplate.convertAndSend(RabbitMQConfig.INSTANCE_STATUS_QUEUE, msg);
         }, delaySeconds, TimeUnit.SECONDS);
     }
 }
