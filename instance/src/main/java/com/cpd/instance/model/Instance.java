@@ -11,7 +11,7 @@ public class Instance {
     private String diskId;
 
     public Instance() {
-        
+
     }
 
     public Instance(String id, String name, int memory, int cores, String ip, String status, String diskId) {
@@ -24,7 +24,7 @@ public class Instance {
         this.diskId = diskId;
     }
 
-    // Getters y Setters
+    // Getters and Setters
     public String getId() {
         return id;
     }
