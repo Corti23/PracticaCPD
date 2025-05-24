@@ -7,8 +7,8 @@ import com.cpd.api.entity.InstanceEntity;
 import com.cpd.api.model.Disk;
 import com.cpd.api.repository.DiskRepository;
 import com.cpd.api.repository.InstanceRepository;
-
 import org.springframework.stereotype.Service;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,10 +17,12 @@ import java.util.*;
 @Service
 public class InstanceService {
 
+    private final RabbitTemplate rabbitTemplate;
     private final InstanceRepository instanceRepository;
     private final DiskRepository diskRepository;
 
-    public InstanceService(InstanceRepository instanceRepository, DiskRepository diskRepository) {
+    public InstanceService(RabbitTemplate rabbitTemplate, InstanceRepository instanceRepository, DiskRepository diskRepository) {
+        this.rabbitTemplate = rabbitTemplate;
         this.instanceRepository = instanceRepository;
         this.diskRepository = diskRepository;
     }
@@ -30,7 +32,7 @@ public class InstanceService {
     }
 
     public String createInstance(CreateInstanceRequest request) {
-        // create associated disk
+        // Create associated disk
         String diskId = UUID.randomUUID().toString();
         DiskEntity disk = new DiskEntity(diskId, request.getDiskSize(), request.getDiskType(), "REQUESTED");
         diskRepository.save(disk);
@@ -45,8 +47,9 @@ public class InstanceService {
         diskMsg.put("diskId", diskId);
         diskMsg.put("size", request.getDiskSize());
         diskMsg.put("type", request.getDiskType());
-        diskMsg.put("instanceId", instanceId); // opcional
+        diskMsg.put("instanceId", instanceId); // Optional
 
+        rabbitTemplate.convertAndSend("disk-requests", diskMsg);
 
         return instanceId;
     }
@@ -108,7 +111,7 @@ public class InstanceService {
                 instanceRepository.findByDisk_Id(diskId)
                 .ifPresentOrElse(
                     this::startInstanceCreation,
-                    () -> System.err.println("No se encontró instancia con disco " + diskId)
+                    () -> System.err.println("No instance found with disk " + diskId)
                 );
             }
         });
@@ -134,6 +137,7 @@ public class InstanceService {
         msg.put("cores", instance.getCores());
         msg.put("diskId", instance.getDisk().getId());
 
+        rabbitTemplate.convertAndSend("instance-requests", msg);
         instance.setStatus("STARTING");
         instanceRepository.save(instance);
     }
