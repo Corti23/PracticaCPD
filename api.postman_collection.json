@@ -19,12 +19,11 @@
                     "raw": "{\n    \"size\": 100,\n    \"type\": \"SSD\"\n}"
                 },
                 "url": {
-                    "raw": "http://localhost:8080/disks",
+                    "raw": "http://localhost/disks",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "disks"
                     ]
@@ -36,12 +35,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost:8080/disks",
+                    "raw": "http://localhost/disks",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "disks"
                     ]
@@ -53,12 +51,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost:8080/disks?status=ASSIGNED",
+                    "raw": "http://localhost/disks?status=ASSIGNED",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "disks"
                     ],
@@ -76,12 +73,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http://localhost:8080/disks/{{diskId}}",
+                    "raw": "http://localhost/disks/{{diskId}}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "disks",
                         "{{diskId}}"
@@ -104,12 +100,11 @@
                     "raw": "{\n    \"name\": \"TestVM\",\n    \"memory\": 8,\n    \"cores\": 4,\n    \"diskSize\": 50,\n    \"diskType\": \"HDD\"\n}"
                 },
                 "url": {
-                    "raw": "http://localhost:8080/instances",
+                    "raw": "http://localhost/instances",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "instances"
                     ]
@@ -121,12 +116,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost:8080/instances",
+                    "raw": "http://localhost/instances",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "instances"
                     ]
@@ -138,12 +132,11 @@
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost:8080/instances?status=RUNNING",
+                    "raw": "http://localhost/instances?status=RUNNING",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "instances"
                     ],
@@ -161,12 +154,11 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http://localhost:8080/instances/{{instanceId}}",
+                    "raw": "http://localhost/instances/{{instanceId}}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8080",
                     "path": [
                         "instances",
                         "{{instanceId}}"
