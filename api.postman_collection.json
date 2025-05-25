@@ -47,23 +47,18 @@
             }
         },
         {
-            "name": "Get Disks by Status",
+            "name": "Get Disks by Id",
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost/disks?status=ASSIGNED",
+                    "raw": "http://localhost/disks/{id}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
                     "path": [
-                        "disks"
-                    ],
-                    "query": [
-                        {
-                            "key": "status",
-                            "value": "ASSIGNED"
-                        }
+                        "disks",
+                        "{{id}}"
                     ]
                 }
             }
@@ -73,14 +68,14 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http://localhost/disks/{{diskId}}",
+                    "raw": "http://localhost/disks/{id}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
                     "path": [
                         "disks",
-                        "{{diskId}}"
+                        "{{id}}"
                     ]
                 }
             }
@@ -97,7 +92,7 @@
                 ],
                 "body": {
                     "mode": "raw",
-                    "raw": "{\n    \"name\": \"TestVM\",\n    \"memory\": 8,\n    \"cores\": 4,\n    \"diskSize\": 50,\n    \"diskType\": \"HDD\"\n}"
+                    "raw": "{\n    \"name\": \"Test\",\n    \"memory\": 8,\n    \"cores\": 4,\n    \"diskSize\": 50,\n    \"diskType\": \"HDD\"\n}"
                 },
                 "url": {
                     "raw": "http://localhost/instances",
@@ -128,23 +123,18 @@
             }
         },
         {
-            "name": "Get Instances by Status",
+            "name": "Get Instances by Id",
             "request": {
                 "method": "GET",
                 "url": {
-                    "raw": "http://localhost/instances?status=RUNNING",
+                    "raw": "http://localhost/instances/{id}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
                     "path": [
-                        "instances"
-                    ],
-                    "query": [
-                        {
-                            "key": "status",
-                            "value": "RUNNING"
-                        }
+                        "instances",
+                        "{{id}}"
                     ]
                 }
             }
@@ -154,14 +144,14 @@
             "request": {
                 "method": "DELETE",
                 "url": {
-                    "raw": "http://localhost/instances/{{instanceId}}",
+                    "raw": "http://localhost/instances/{id}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
                     "path": [
                         "instances",
-                        "{{instanceId}}"
+                        "{{id}}"
                     ]
                 }
             }
