@@ -158,8 +158,7 @@ Asegúrate de que tu entorno esté funcionando correctamente ejecutando los sigu
        - [Commit 4](https://github.com/Corti23/PracticaCPD/commit/57134f7cb348089dad938ad7380551ab74cedc15)
        - [Commit 5](https://github.com/Corti23/PracticaCPD/commit/7933de8aa3447e32006ba1bf1debad0b32139db7)
     - 5 ficheros en los que se ha participado:
-      - 
-[haproxy.cfg](https://github.com/Corti23/PracticaCPD/blob/main/haproxy.cfg)
+      - [haproxy.cfg](https://github.com/Corti23/PracticaCPD/blob/main/haproxy.cfg)
       - [InstanceResponse.java](https://github.com/Corti23/PracticaCPD/blob/main/api/src/main/java/com/cpd/api/dto/InstanceResponse.java)
       - [CreateInstanceRequest.java](https://github.com/Corti23/PracticaCPD/blob/main/api/src/main/java/com/cpd/api/dto/CreateInstanceRequest.java)
       - [Instance.java](https://github.com/Corti23/PracticaCPD/blob/main/api/src/main/java/com/cpd/api/model/Instance.java)
@@ -194,7 +193,7 @@ Asegúrate de que tu entorno esté funcionando correctamente ejecutando los sigu
       - [GlobalExceptionHandler](https://github.com/Corti23/PracticaCPD/blob/main/api/src/main/java/com/cpd/api/exception/GlobalExceptionHandler.java)
       
 - **<span style="color:green">Víctor Cortinas Ruiz</span>:**
-   - Tarea:  creación del RESTController de Disk e Instance, la comunicación entre la API, Disk e Instance mediante RabbitMQ y configurar y programar el docker-compose.
+   - Tareas:  creación del RESTController de Disk e Instance, la comunicación entre la API, Disk e Instance mediante RabbitMQ y configurar y programar el docker-compose.
    - 5 commits más significativos:
       - [Commit 1](https://github.com/Corti23/PracticaCPD/commit/1fcfc4582eee0efd6961ea80b85b753990aed9c1)
       - [Commit 2](https://github.com/Corti23/PracticaCPD/commit/3a8810a791e8e5026530af660b280ec52843b949)
