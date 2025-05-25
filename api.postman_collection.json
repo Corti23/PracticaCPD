@@ -1,0 +1,178 @@
+{
+    "info": {
+        "name": "CPD API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create Disk",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"size\": 100,\n    \"type\": \"SSD\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/disks",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "disks"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get All Disks",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/disks",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "disks"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Disks by Status",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/disks?status=ASSIGNED",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "disks"
+                    ],
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "ASSIGNED"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete Disk",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:8080/disks/{{diskId}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "disks",
+                        "{{diskId}}"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Instance",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"TestVM\",\n    \"memory\": 8,\n    \"cores\": 4,\n    \"diskSize\": 50,\n    \"diskType\": \"HDD\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/instances",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "instances"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get All Instances",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/instances",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "instances"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Instances by Status",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8080/instances?status=RUNNING",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "instances"
+                    ],
+                    "query": [
+                        {
+                            "key": "status",
+                            "value": "RUNNING"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Delete Instance",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:8080/instances/{{instanceId}}",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8080",
+                    "path": [
+                        "instances",
+                        "{{instanceId}}"
+                    ]
+                }
+            }
+        }
+    ]
+}
